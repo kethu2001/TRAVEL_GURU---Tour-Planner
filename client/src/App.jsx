@@ -5,7 +5,7 @@ import About from './pages/About';
 import Footer from './components/Footer';
 import Register from './pages/Register';
 import SignIn from './pages/SignIn';
-import Dashboard from './pages/Dashboard';
+// import Dashboard from './pages/Dashboard';
 
 export default function App() {
   return (
@@ -15,7 +15,7 @@ export default function App() {
         <Route path='/about' element={<About />} />
         <Route path='/register' element={<Register />} />
         <Route path='/signin' element={<SignIn />} />
-        <Route path='/dashboard' element={<Dashboard />} />
+        {/* <Route path='/dashboard' element={<Dashboard />} /> */}
       </Routes>
       <Footer />
     </BrowserRouter>
