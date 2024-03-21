@@ -48,48 +48,39 @@ export default function Register() {
 
   };
   return (
+    
     <div>
-      <Header />
-      {/* <div className="h-screen bg-cover bg-center" style={{ backgroundImage: `url(${beach})`, opacity: 0.6, backgroundSize: 'cover' }} /> */}
-
-
-      <div className="flex justify-center items-center h-screen bg-gray-200">
-
-        <img src={beach} alt="" className="fixed object-cover w-full h-full z-0 opacity-60" />
-
-        <div className="w-full max-w-sm p-8 bg-white border border-gray-300 border-solid rounded-lg drop-shadow-lg z-10 opacity-85">
-
-          <img src={TravelGuruLogo} alt="" className="object-cover" style={{ transform: 'translateX(120px)', width: '100px', height: '100px' }} />
-
-          <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
-            <input type="text" placeholder='Enter UserName' className='border p-3 rounded-lg border-blue-300 bg-gray-300 text-xs ' id='username' onChange={handleChange} />
-            <input type="email" placeholder='Email' className='border p-3 rounded-lg  border-blue-300 bg-gray-300 text-xs' id='email' onChange={handleChange} />
-            <input type="password" placeholder='Password' className='border p-3 rounded-lg  border-blue-300 bg-gray-300 text-xs' id='password' onChange={handleChange} />
-            <button disabled={loading} className='bg-blue-700 text-white p-3 rounded-lg  hover:opacity-95 disabled:opacity-80 text-xs'>{loading ? 'Loading...' : 'Register'}</button>
-
-            <div className='flex gap-1 text-xs'>
-              <p>Already Have an account?</p>
-
-              <Link to={"/sign-in"}>
-                <span className='text-blue-700'>Sign in</span>
-              </Link>
-            </div>
-            <div className="flex items-center">
-              <hr className='border-black w-5/12 opacity-40' />
-              <span className="mx-4 opacity-40">or</span><hr className='border-black w-5/12 opacity-40' />
-            </div>
-
-            {/* <OAuth />
-<OAuthFB/> */}
-          </form>
-          {error && <p className='text-red-500 mt-5'>{error}</p>}
-
-        </div>
+    <Header />
+  
+    <div className="h-screen bg-cover bg-center " style={{ backgroundImage: `url(${beach})`, opacity: 0.9, backgroundSize: 'cover' }}>
+      <div className="w-full max-w-sm p-8 bg-white border border-gray-300 border-solid rounded-lg drop-shadow-lg z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/3 translateY(50%) translateY(-100px)">
+        <img src={TravelGuruLogo} alt="" className="object-cover" style={{ transform: 'translateX(120px)', width: '100px', height: '100px' }} />
+  
+        <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+          <input type="text" placeholder='Enter UserName' className='border p-3 rounded-lg border-blue-300 bg-gray-300 text-xs ' id='username' onChange={handleChange} />
+          <input type="email" placeholder='Email' className='border p-3 rounded-lg  border-blue-300 bg-gray-300 text-xs' id='email' onChange={handleChange} />
+          <input type="password" placeholder='Password' className='border p-3 rounded-lg  border-blue-300 bg-gray-300 text-xs' id='password' onChange={handleChange} />
+          <button disabled={loading} className='bg-blue-700 text-white p-3 rounded-lg  hover:opacity-95 disabled:opacity-80 text-xs'>{loading ? 'Loading...' : 'Register'}</button>
+  
+          <div className='flex gap-1 text-xs'>
+            <p>Already Have an account?</p>
+  
+            <Link to={"/sign-in"}>
+              <span className='text-blue-700'>Sign in</span>
+            </Link>
+          </div>
+          <div className="flex items-center">
+            <hr className='border-black w-5/12 opacity-40' />
+            <span className="mx-4 opacity-40">or</span><hr className='border-black w-5/12 opacity-40' />
+          </div>
+  
+          {/* <OAuth />
+  <OAuthFB/> */}
+        </form>
+        {error && <p className='text-red-500 mt-5'>{error}</p>}
       </div>
-
-
-
     </div>
-
+  
+  </div>
   )
 }
