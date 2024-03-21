@@ -7,6 +7,7 @@ import TravelGuruLogo from '../images/TravelGuruLogo.png';
 // import OAuthFB from '../components/OAuthFB';
 import beach from '../images/beach.png'
 import Header from '../components/Header'
+import OAuth from '../components/OAuth';
 
 export default function Register() {
   const [formData, setFormData] = useState({});
@@ -74,8 +75,8 @@ export default function Register() {
             <span className="mx-4 opacity-40">or</span><hr className='border-black w-5/12 opacity-40' />
           </div>
   
-          {/* <OAuth />
-  <OAuthFB/> */}
+          <OAuth/>
+  
         </form>
         {error && <p className='text-red-500 mt-5'>{error}</p>}
       </div>
