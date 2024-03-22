@@ -65,7 +65,7 @@ export default function DashSidebar() {
           <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer'>
             Users
           </Sidebar.Item>
-          <Sidebar.Item icon={HiArrowSmHiDocumentTextRight} className='cursor-pointer'>
+          <Sidebar.Item icon={HiDocumentText} className='cursor-pointer'>
             Reports
           </Sidebar.Item>
           <Sidebar.Item
