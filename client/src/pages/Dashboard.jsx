@@ -4,6 +4,8 @@ import DashSidebar from '../components/DashSidebar';
 import DashProfile from '../components/DashProfile';
 import Header from '../components/Header';
 import Places from '../components/Places';
+import CreatePlaces from './CreatePlaces';
+
 export default function Dashboard() {
     const location = useLocation();
     const [tab, setTab] = useState('');
@@ -25,6 +27,7 @@ export default function Dashboard() {
                 {/* profile... */}
                 {tab === 'profile' && <DashProfile />}
                 {tab === 'travelplaces' && <Places />}
+                {tab === 'addplaces' && <CreatePlaces />}
             </div>
         </div>
     )
