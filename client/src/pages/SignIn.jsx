@@ -70,7 +70,7 @@ export default function SignIn() {
                 <button disabled={loading} className="bg-blue-800 text-white p-3 rounded-lg  hover:bg-blue-600 disabled:opacity-50 text-xs" type="submit">
                   {loading ? 'Loading...' : <span style={{ color: '#FFFFFF' }}>Sign In</span>}
                 </button>
-                <p className='text-xs'>Don't have an account? <Link to="/sign-up" className="text-blue-500" style={{ color: '#0045A6' }}>Register</Link></p>
+                <p className='text-xs'>Don't have an account? <Link to="/register" className="text-blue-500" style={{ color: '#0045A6' }}>Register</Link></p>
                 <div className="flex items-center">
                   <hr className='border-black w-5/12 opacity-40' />
                   <span className="mx-4 opacity-40">or</span><hr className='border-black w-5/12 opacity-40' />
