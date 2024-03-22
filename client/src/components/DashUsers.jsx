@@ -46,7 +46,22 @@ export default function DashUsers() {
     }
   };
 
-  const handleDeleteUser = async () => {};
+  const handleDeleteUser = async () => {
+    try {
+        const res = await fetch(`/api/user/delete/${userIdToDelete}`, {
+            method: 'DELETE',
+        });
+        const data = await res.json();
+        if (res.ok) {
+            setUsers((prev) => prev.filter((user) => user._id !== userIdToDelete));
+            setShowModal(false);
+        } else {
+            console.log(data.message);
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
+  };
 
   return (
     <div className='border-2 p-7 rounded-lg border-yellow-300 bg-slate-300 shadow-xl w-9/12 mx-10 mt-10'>
