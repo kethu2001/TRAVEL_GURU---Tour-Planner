@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     getDownloadURL,
     getStorage,
@@ -8,12 +8,13 @@ import {
 import { app } from '../firebase';
 import { set } from 'mongoose';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams  } from 'react-router-dom';
 import { Button, FileInput, Select, TextInput, Alert } from 'flowbite-react';
 
-export default function CreatePlaces() {
+export default function UpdatePlaces() {
     const { currentUser } = useSelector((state) => state.user);
     const navigate = useNavigate();
+
     const [files, setFiles] = useState([]);
     const [formData, setFormData] = useState({
         imageUrls: [],
@@ -24,11 +25,35 @@ export default function CreatePlaces() {
         tourtype: '',
     });
     const [publishError, setPublishError] = useState(null);
+    const { placeId } = useParams();
     const [imageUploadError, setImageUploadError] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
     console.log(formData);
+
+    useEffect(() => {
+        try {
+          const fetchPlace = async () => {
+            const res = await fetch(`/api/place/getplaces?placeId=${placeId}`);
+            const data = await res.json();
+            if (!res.ok) {
+              console.log(data.message);
+              setPublishError(data.message);
+              return;
+            }
+            if (res.ok) {
+              setPublishError(null);
+              setFormData(data.places[0]);
+            }
+          };
+    
+          fetchPlace();
+        } catch (error) {
+          console.log(error.message);
+        }
+      }, [placeId]);
+
     const handleImageSubmit = (e) => {
         if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
             setUploading(true);
@@ -92,8 +117,8 @@ export default function CreatePlaces() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch('/api/place/create', {
-                method: 'POST',
+            const res = await fetch(`/api/place/updateplace/${formData._id}/${currentUser._id}`, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -126,7 +151,7 @@ export default function CreatePlaces() {
                 </div> */}
                 <div className='border-2 p-8 rounded-lg border-yellow-300 bg-red-100 shadow-xl mt-12 w-screen'>
                     <div className='border-2 p-7 rounded-lg border-yellow-300 bg-slate-300 shadow-xl w-9/12 mx-10 '>
-                        <h1 className='text-3xl font-semibold text-center my-7'>Create a tour place</h1>
+                        <h1 className='text-3xl font-semibold text-center my-7'>Update a tour place</h1>
 
                         <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-4'>
 
@@ -135,19 +160,24 @@ export default function CreatePlaces() {
                             <div className='flex flex-col gap-4 flex-1'>
                                 <input type='text' placeholder='Name of the place' className='border-2 p-3 rounded-lg border-yellow-300' id='name' maxLength='62' minLength='10' onChange={(e) =>
                                     setFormData({ ...formData, name: e.target.value })
-                                } />
+                                }
+                                value={formData.name} />
                                 <textarea type='text' placeholder='Description' className='border-2 p-3 rounded-lg border-yellow-300' id='description' onChange={(e) =>
                                     setFormData({ ...formData, description: e.target.value })
-                                } />
+                                }
+                                value={formData.description} />
                                 <input type='text' placeholder='Address' className='border-2 p-3 rounded-lg border-yellow-300' id='address' onChange={(e) =>
                                     setFormData({ ...formData, address: e.target.value })
-                                } />
+                                }
+                                value={formData.address} />
                                 <input type='text' placeholder='Province' className='border-2 p-3 rounded-lg border-yellow-300' id='province' onChange={(e) =>
                                     setFormData({ ...formData, province: e.target.value })
-                                } />
+                                }
+                                value={formData.province} />
                                 <Select className='border-2 p-3 rounded-lg border-yellow-300' id='tourtype' onChange={(e) =>
                                     setFormData({ ...formData, tourtype: e.target.value })
-                                }>
+                                }
+                                value={formData.tourtype}>
                                     <option value='uncategorized'>Select a Type</option>
                                     <option value='Temple'>Temple</option>
                                     <option value='hplace'>Historical Place</option>
@@ -180,7 +210,7 @@ export default function CreatePlaces() {
                                         </div>
                                     ))}
                                 <button className='p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>
-                                    Create Tour Place
+                                    Update tour place
                                 </button>
 
                             </div>
