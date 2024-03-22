@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
-import { Table } from 'flowbite-react';
+import { Modal, Table, Button } from 'flowbite-react';
 import { useSelector } from 'react-redux';
 import { HiPlus } from 'react-icons/hi';
-import { Button } from 'flowbite-react';
 import { Link } from 'react-router-dom';
+import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { set } from 'mongoose';
 
 export default function Places() {
     const { currentUser } = useSelector((state) => state.user);
     const [userPlaces, setUserPlaces] = useState([]);
     const [showMore, setShowMore] = useState(true);
-    console.log(userPlaces);
+    const [showModal, setShowModal] = useState(false);
+  const [placeIdToDelete, setPlaceIdToDelete] = useState('');
     useEffect(() => {
         const fetchPlaces = async () => {
             try {
@@ -20,7 +21,7 @@ export default function Places() {
                     setUserPlaces(data.places);
                     if (data.places.length < 9) {
                         setShowMore(false);
-                      }
+                    }
                 }
             } catch (error) {
                 console.log(error.message);
@@ -34,15 +35,37 @@ export default function Places() {
     const handleShowMore = async () => {
         const startIndex = userPlaces.length;
         try {
+            const res = await fetch(
+                `/api/place/getplaces?userId=${currentUser._id}&startIndex=${startIndex}`
+            );
+            const data = await res.json();
+            if (res.ok) {
+                setUserPlaces((prev) => [...prev, ...data.places]);
+                if (data.places.length < 9) {
+                    setShowMore(false);
+                }
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+
+    const handleDeletePlace = async () => {
+        setShowModal(false);
+        try {
           const res = await fetch(
-            `/api/place/getplaces?userId=${currentUser._id}&startIndex=${startIndex}`
+            `/api/place/deleteplace/${placeIdToDelete}/${currentUser._id}`,
+            {
+              method: 'DELETE',
+            }
           );
           const data = await res.json();
-          if (res.ok) {
-            setUserPlaces((prev) => [...prev, ...data.places]);
-            if (data.places.length < 9) {
-              setShowMore(false);
-            }
+          if (!res.ok) {
+            console.log(data.message);
+          } else {
+            setUserPlaces((prev) =>
+              prev.filter((place) => place._id !== placeIdToDelete)
+            );
           }
         } catch (error) {
           console.log(error.message);
@@ -99,7 +122,13 @@ export default function Places() {
                                                     </Table.Cell>
                                                     <Table.Cell>{place.tourtype}</Table.Cell>
                                                     <Table.Cell>
-                                                        <span className='font-medium text-red-500 hover:underline cursor-pointer'>
+                                                    <span
+                      onClick={() => {
+                        setShowModal(true);
+                        setPlaceIdToDelete(place._id);
+                      }}
+                      className='font-medium text-red-500 hover:underline cursor-pointer'
+                    >
                                                             Delete
                                                         </span>
                                                     </Table.Cell>
@@ -116,17 +145,41 @@ export default function Places() {
                                         ))}
                                     </Table>
                                     {showMore && (
-            <button
-              onClick={handleShowMore}
-              className='w-full text-teal-500 self-center text-sm py-7'
-            >
-              Show more
-            </button>
-          )}
+                                        <button
+                                            onClick={handleShowMore}
+                                            className='w-full text-teal-500 self-center text-sm py-7'
+                                        >
+                                            Show more
+                                        </button>
+                                    )}
                                 </>
                             ) : (
                                 <p>You have no posts yet!</p>
                             )}
+                            <Modal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        popup
+        size='md'
+      >
+        <Modal.Header />
+        <Modal.Body>
+          <div className='text-center'>
+            <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
+            <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
+              Are you sure you want to delete this post?
+            </h3>
+            <div className='flex justify-center gap-4'>
+              <Button color='failure' onClick={handleDeletePlace}>
+                Yes, I'm sure
+              </Button>
+              <Button color='gray' onClick={() => setShowModal(false)}>
+                No, cancel
+              </Button>
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
                         </div>
                     </div>
                 </div>
