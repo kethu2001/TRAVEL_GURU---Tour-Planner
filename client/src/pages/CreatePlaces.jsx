@@ -9,7 +9,7 @@ import { app } from '../firebase';
 import { set } from 'mongoose';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Button, FileInput, Select, TextInput } from 'flowbite-react';
+import { Button, FileInput, Select, TextInput, Alert } from 'flowbite-react';
 
 export default function CreatePlaces() {
     const { currentUser } = useSelector((state) => state.user);
