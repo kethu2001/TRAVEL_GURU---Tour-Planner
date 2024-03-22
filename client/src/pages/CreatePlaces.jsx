@@ -7,16 +7,27 @@ import {
 } from 'firebase/storage';
 import { app } from '../firebase';
 import { set } from 'mongoose';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Button, FileInput, Select, TextInput } from 'flowbite-react';
 
 export default function CreatePlaces() {
+    const { currentUser } = useSelector((state) => state.user);
+    const navigate = useNavigate();
     const [files, setFiles] = useState([]);
     const [formData, setFormData] = useState({
         imageUrls: [],
+        name: '',
+        description: '',
+        address: '',
+        province: '',
+        tourtype: '',
     });
+    const [publishError, setPublishError] = useState(null);
     const [imageUploadError, setImageUploadError] = useState(false);
     const [uploading, setUploading] = useState(false);
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
     console.log(formData);
     const handleImageSubmit = (e) => {
         if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
@@ -78,6 +89,31 @@ export default function CreatePlaces() {
         });
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await fetch('/api/place/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+            const data = await res.json();
+            if (!res.ok) {
+                setPublishError(data.message);
+                return;
+            }
+
+            if (res.ok) {
+                setPublishError(null);
+                navigate(`/place/${data.slug}`);
+            }
+        } catch (error) {
+            setPublishError('Something went wrong');
+        }
+    };
+
     return (
         <main className='p-8 mx-auto bg-slate-50'>
             <div className='flex justify-center  '>
@@ -92,16 +128,26 @@ export default function CreatePlaces() {
                     <div className='border-2 p-7 rounded-lg border-yellow-300 bg-slate-300 shadow-xl w-9/12 mx-10 '>
                         <h1 className='text-3xl font-semibold text-center my-7'>Edit Your Place</h1>
 
-                        <form className='flex flex-col sm:flex-row gap-4'>
+                        <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-4'>
 
 
 
                             <div className='flex flex-col gap-4 flex-1'>
-                                <input type='text' placeholder='Name of the place' className='border-2 p-3 rounded-lg border-yellow-300' id='name' maxLength='62' minLength='10' />
-                                <textarea type='text' placeholder='Description' className='border-2 p-3 rounded-lg border-yellow-300' id='description' />
-                                <input type='text' placeholder='Address' className='border-2 p-3 rounded-lg border-yellow-300' id='address' />
-                                <input type='text' placeholder='Province' className='border-2 p-3 rounded-lg border-yellow-300' id='province' />
-                                <Select className='border-2 p-3 rounded-lg border-yellow-300' id='tourtype'>
+                                <input type='text' placeholder='Name of the place' className='border-2 p-3 rounded-lg border-yellow-300' id='name' maxLength='62' minLength='10' onChange={(e) =>
+                                    setFormData({ ...formData, name: e.target.value })
+                                } />
+                                <textarea type='text' placeholder='Description' className='border-2 p-3 rounded-lg border-yellow-300' id='description' onChange={(e) =>
+                                    setFormData({ ...formData, description: e.target.value })
+                                } />
+                                <input type='text' placeholder='Address' className='border-2 p-3 rounded-lg border-yellow-300' id='address' onChange={(e) =>
+                                    setFormData({ ...formData, address: e.target.value })
+                                } />
+                                <input type='text' placeholder='Province' className='border-2 p-3 rounded-lg border-yellow-300' id='province' onChange={(e) =>
+                                    setFormData({ ...formData, province: e.target.value })
+                                } />
+                                <Select className='border-2 p-3 rounded-lg border-yellow-300' id='tourtype' onChange={(e) =>
+                                    setFormData({ ...formData, tourtype: e.target.value })
+                                }>
                                     <option value='uncategorized'>Select a Type</option>
                                     <option value='Temple'>Temple</option>
                                     <option value='hplace'>Historical Place</option>
@@ -167,6 +213,11 @@ export default function CreatePlaces() {
                                 </div>
 
                             </div>
+                            {publishError && (
+                                <Alert className='mt-5' color='failure'>
+                                    {publishError}
+                                </Alert>
+                            )}
 
 
 
