@@ -80,3 +80,28 @@ export const deleteplace = async (req, res, next) => {
     next(error);
   }
 };
+
+export const updateplace = async (req, res, next) => {
+  if (!req.user.isAdmin || req.user.id !== req.params.userId) {
+    return next(errorHandler(403, 'You are not allowed to update this tour place.'));
+  }
+  try {
+    const updatedPlace = await Place.findByIdAndUpdate(
+      req.params.placeId,
+      {
+        $set: {
+          name: req.body.name,
+          description: req.body.description,
+          address: req.body.address,
+          Province: req.body.Province,
+          tourtype: req.body.tourtype,
+          imageUrls: req.body.imageUrls,
+        },
+      },
+      { new: true }
+    );
+    res.status(200).json(updatedPlace);
+  } catch (error) {
+    next(error);
+  }
+};

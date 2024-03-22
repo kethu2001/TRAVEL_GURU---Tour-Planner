@@ -7,6 +7,7 @@ import Register from './pages/Register';
 import SignIn from './pages/SignIn';
 import Dashboard from './pages/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
+import UpdatePlaces from './pages/UpdatePlaces';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path='/about' element={<About />} />
         <Route path='/register' element={<Register />} />
         <Route path='/signin' element={<SignIn />} />
+        <Route path='/update-place/:placeId' element={<UpdatePlaces />} />
         <Route element={<PrivateRoute />}>
           <Route path='/dashboard' element={<Dashboard />} />
         </Route>
