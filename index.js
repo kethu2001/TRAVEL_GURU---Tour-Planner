@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/auth.route.js';
 import userRoutes from './routes/user.route.js';
 
+import placeRoutes from './routes/place.route.js'
+
 dotenv.config();
 
 mongoose.connect(process.env.MONGO).then(() => {
@@ -14,6 +16,7 @@ mongoose.connect(process.env.MONGO).then(() => {
 
 const app = express();
 
+
 app.use(express.json());
 
 app.listen(3000, () => {
@@ -22,6 +25,7 @@ app.listen(3000, () => {
 
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/place', placeRoutes);
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
