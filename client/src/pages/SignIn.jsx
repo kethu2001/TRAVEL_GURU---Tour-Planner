@@ -53,7 +53,7 @@ export default function SignIn() {
 
   return (
     <div>
-      <Header />
+      
       <div className="flex flex-col justify-center items-center h-screen">
         <div className="w-full h-full overflow-hidden absolute" style={{ backgroundImage: `url(${login})`, opacity: 0.6, backgroundSize: 'cover', backgroundPosition: 'center', zIndex: -1 }}></div>
 

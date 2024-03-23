@@ -51,7 +51,7 @@ export default function Register() {
   return (
     
     <div>
-    <Header />
+    
   
     <div className="h-screen bg-cover bg-center " style={{ backgroundImage: `url(${beach})`, opacity: 0.9, backgroundSize: 'cover' }}>
       <div className="w-full max-w-sm p-8 bg-white border border-gray-300 border-solid rounded-lg drop-shadow-lg z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/3 translateY(50%) translateY(-100px)">
