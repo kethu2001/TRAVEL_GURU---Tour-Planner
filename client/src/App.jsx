@@ -10,6 +10,7 @@ import PrivateRoute from './components/PrivateRoute';
 import UpdatePlaces from './pages/UpdatePlaces';
 import Placepage from './pages/Placepage';
 import Header from './components/Header';
+import Profile from './pages/Profile';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path='/about' element={<About />} />
         <Route path='/register' element={<Register />} />
         <Route path='/signin' element={<SignIn />} />
+        <Route path='/profile' element={<Profile />} />
         <Route path='/update-place/:placeId' element={<UpdatePlaces />} />
         <Route path='/place/:placeSlug' element={<Placepage />} />
         <Route element={<PrivateRoute />}>
