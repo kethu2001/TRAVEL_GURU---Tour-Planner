@@ -32,7 +32,7 @@ export const getplaces = async (req, res, next) => {
     const places = await Place.find({
       ...(req.query.userId && { userId: req.query.userId }),
       ...(req.query.tourtype && { tourtype: req.query.tourtype }),
-      ...(req.query.slug && { tourtype: req.query.slug }),
+      ...(req.query.slug && { slug: req.query.slug }),
       ...(req.query.placeId && { _id: req.query.placeId }),
       ...(req.query.searchTerm && {
         $or: [
