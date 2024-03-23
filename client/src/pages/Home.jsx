@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../components/Header'
+//import Header from '../components/Header'
 import heroimg01 from '../images/heroimg01.jpg'
 import heroimg02 from '../images/heroimg02.jpg'
 import herovideo from '../images/herovideo.mp4';
@@ -7,7 +7,7 @@ import herovideo from '../images/herovideo.mp4';
 export default function Home() {
   return (
     <div>
-      <Header />
+     
     <div>
     <section className="py-8">
   <div className="container flex items-center mx-20 ">
