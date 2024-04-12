@@ -85,7 +85,7 @@ export default function DashUsers() {
                   </Table.Cell>
                   <Table.Cell>
                     <img
-                      src={user.profilePicture}
+                      src={user.profilePicture || 'https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?t=st=1712935671~exp=1712939271~hmac=b6e273c97b42b6905a18a81a4ec804bd4f404b056ea3b928091322fc6ea9f3c3&w=740'}
                       alt={user.username}
                       className='w-10 h-10 object-cover bg-gray-500 rounded-full'
                     />
