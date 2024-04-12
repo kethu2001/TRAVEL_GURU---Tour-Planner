@@ -11,10 +11,12 @@ import UpdatePlaces from './pages/UpdatePlaces';
 import Placepage from './pages/Placepage';
 import Header from './components/Header';
 import Profile from './pages/Profile';
+import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
   return (
     <BrowserRouter>
+    <ScrollToTop />
     <Header />
       <Routes>
         <Route path='/' element={<Home />} />
