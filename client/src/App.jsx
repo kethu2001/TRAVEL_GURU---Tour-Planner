@@ -12,6 +12,7 @@ import Placepage from './pages/Placepage';
 import Header from './components/Header';
 import Profile from './pages/Profile';
 import ScrollToTop from './components/ScrollToTop';
+import Tour from './pages/Tour';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/tours' element={<Tour />} />
         <Route path='/update-place/:placeId' element={<UpdatePlaces />} />
         <Route path='/place/:placeSlug' element={<Placepage />} />
         <Route element={<PrivateRoute />}>
