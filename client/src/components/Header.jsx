@@ -15,9 +15,11 @@ export default function Header() {
         </Link>
         
         <ul className='flex gap-5 items-center'>
-          <li className='hidden sm:inline text-white hover:underline'>Home</li>
-          <li className='hidden sm:inline text-white hover:underline'>About</li>
-          <li className='hidden sm:inline text-white hover:underline'>Tour</li>
+          <Link to='/'>
+          <li className='hidden sm:inline text-white hover:underline cursor-pointer'>Home</li>
+          </Link>
+          <li className='hidden sm:inline text-white hover:underline cursor-pointer'>About</li>
+          <li className='hidden sm:inline text-white hover:underline cursor-pointer'>Tour</li>
         </ul>
 
         <div className='space-x-4'>
