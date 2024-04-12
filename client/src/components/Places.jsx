@@ -74,7 +74,7 @@ export default function Places() {
     return (
         <main className='p-8 mx-auto bg-slate-50'>
             <div className='flex justify-center  '>
-                <div className='border-2 p-8 rounded-lg border-yellow-300 bg-red-100 shadow-xl mt-12 w-screen'>
+                {/* <div className='border-2 p-8 rounded-lg border-yellow-300 bg-red-100 shadow-xl mt-12 w-screen'> */}
                 <div className='border-2 p-7 rounded-lg border-yellow-300 bg-slate-300 shadow-xl w-screen mx-10 '>
                     <Link to='/dashboard?tab=addplaces'>
                         <Button color="blue">
@@ -182,7 +182,7 @@ export default function Places() {
                         </Modal>
                     </div>
                 </div>
-                </div>
+                {/* </div> */}
             </div>
 
         </main>
