@@ -115,7 +115,7 @@ export default function Places() {
                                                 <Table.Cell>
                                                     <Link
                                                         className='font-medium text-gray-900 dark:text-white'
-                                                        to={`/post/${place.slug}`}
+                                                        to={`/place/${place.slug}`}
                                                     >
                                                         {place.name}
                                                     </Link>
