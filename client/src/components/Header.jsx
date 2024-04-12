@@ -18,8 +18,12 @@ export default function Header() {
           <Link to='/'>
           <li className='hidden sm:inline text-white hover:underline cursor-pointer'>Home</li>
           </Link>
+          <Link to='/about'>
           <li className='hidden sm:inline text-white hover:underline cursor-pointer'>About</li>
+          </Link>
+          <Link to='/tours'>
           <li className='hidden sm:inline text-white hover:underline cursor-pointer'>Tour</li>
+          </Link>
         </ul>
 
         <div className='space-x-4'>

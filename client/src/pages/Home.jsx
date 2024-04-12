@@ -1,4 +1,5 @@
-import React from 'react'
+import { useEffect, useState } from 'react';
+import PlaceCard from '../components/PlaceCard'
 //import Header from '../components/Header'
 import heroimg01 from '../images/heroimg01.jpg'
 import heroimg02 from '../images/heroimg02.jpg'
@@ -6,6 +7,22 @@ import herovideo from '../images/herovideo.mp4';
 // import PlaceCard from '../components/PlaceCard';
 
 export default function Home() {
+  const [recentPlaces, setRecentPlaces] = useState(null);
+
+  useEffect(() => {
+    try {
+      const fetchRecentPlaces = async () => {
+        const res = await fetch(`/api/place/getplaces?limit=6`);
+        const data = await res.json();
+        if (res.ok) {
+          setRecentPlaces(data.places);
+        }
+      };
+      fetchRecentPlaces();
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, []);
   return (
     <div>
 
@@ -35,6 +52,10 @@ export default function Home() {
           Our Tours
         </h1>
         {/* <PlaceCard /> */}
+        <div className='flex flex-wrap gap-20 mt-5 justify-center'>
+          {recentPlaces &&
+            recentPlaces.map((place) => <PlaceCard key={place._id} place={place} />)}
+        </div>
       </div>
     </div>
   )
