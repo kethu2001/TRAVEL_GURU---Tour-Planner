@@ -4,7 +4,7 @@ import PlaceCard from '../components/PlaceCard'
 import heroimg01 from '../images/heroimg01.jpg'
 import heroimg02 from '../images/heroimg02.jpg'
 import herovideo from '../images/herovideo.mp4';
-// import PlaceCard from '../components/PlaceCard';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   const [recentPlaces, setRecentPlaces] = useState(null);
@@ -23,6 +23,7 @@ export default function Home() {
       console.log(error.message);
     }
   }, []);
+
   return (
     <div>
 
@@ -47,7 +48,7 @@ export default function Home() {
           </div>
         </section>
       </div>
-      <div className='p-10'>
+      <div className='p-10 flex flex-col gap-6'>
         <h1 className='font-bold text-3xl lg:text-6xl p-8'>
           Our Tours
         </h1>
@@ -56,6 +57,13 @@ export default function Home() {
           {recentPlaces &&
             recentPlaces.map((place) => <PlaceCard key={place._id} place={place} />)}
         </div>
+        <Link
+          to={'/search'}
+          className='text-lg text-teal-500 hover:underline text-center'
+        >
+          View all posts
+        </Link>
+
       </div>
     </div>
   )
