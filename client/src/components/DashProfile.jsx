@@ -22,6 +22,7 @@ import {
 } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function DashProfile() {
   const { currentUser, error } = useSelector((state) => state.user);
@@ -34,8 +35,10 @@ export default function DashProfile() {
   const [updateUserError, setUpdateUserError] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({});
+  const navigate = useNavigate();
   const filePickerRef = useRef();
   const dispatch = useDispatch();
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -43,6 +46,7 @@ export default function DashProfile() {
       setImageFileUrl(URL.createObjectURL(file));
     }
   };
+
   useEffect(() => {
     if (imageFile) {
       uploadImage();
@@ -143,6 +147,7 @@ export default function DashProfile() {
         dispatch(deleteUserFailure(data.message));
       } else {
         dispatch(deleteUserSuccess(data));
+        navigate('/');
       }
     } catch (error) {
       dispatch(deleteUserFailure(error.message));
