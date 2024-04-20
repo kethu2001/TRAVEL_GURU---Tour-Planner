@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css/bundle';
+import CommentSection from '../components/CommentSection';
 //import Header from '../components/Header'
 
 export default function Placepage() {
@@ -72,6 +73,7 @@ export default function Placepage() {
     <div className='p-3 max-w-2xl mx-auto w-full post-content' dangerouslySetInnerHTML={{__html: place && place.description}}>
 
     </div>
+    <CommentSection placeId={place._id} />
   </main >;
 
 }

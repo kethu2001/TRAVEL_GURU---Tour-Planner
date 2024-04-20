@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
@@ -11,12 +12,13 @@ import UpdatePlaces from './pages/UpdatePlaces';
 import Placepage from './pages/Placepage';
 import Header from './components/Header';
 import Profile from './pages/Profile';
-import Stportal from './pages/Stportal';
-import Traditional from './pages/Traditional';
+import ScrollToTop from './components/ScrollToTop';
+import Tour from './pages/Tour';
 
 export default function App() {
   return (
     <BrowserRouter>
+    <ScrollToTop />
     <Header />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -24,6 +26,7 @@ export default function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/tours' element={<Tour />} />
         <Route path='/stportal' element={<Stportal />} />
         <Route path='traditional' element={<Traditional />} />
         <Route path='/update-place/:placeId' element={<UpdatePlaces />} />
