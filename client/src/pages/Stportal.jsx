@@ -32,20 +32,26 @@ export default function Stportal() {
                             <p className="text-black text-lg mb-8 font-istok">
                                 "Traditional Industries invites you to discover the rich tapestry of artisanal crafts and age-old practices that define the cultural essence of our destinations. Immerse yourself in the heritage of local communities as you witness firsthand the craftsmanship behind traditional trades such as pottery, weaving, and woodworking. Explore our curated selection of experiences that celebrate the legacy of these timeless industries, offering you a glimpse into the soul of each destination."
                             </p>
-                            <button className="absolute bottom-8 right-8 bg-lime-400 shadow-lg text-black py-4 px-8 rounded font-istok font-bold">Explore</button>
+                            <Link to="/Traditional">
+                            <button className="absolute bottom-8 right-8 bg-lime-400 shadow-lg text-black py-4 px-8 rounded font-bold ">
+                                Explore
+                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="relative w-3/4 mx-auto mt-20 shadow-md" style={{ maxWidth: '1040px' }}>
-                <div className="absolute top-0 left-0 text-black font-bold font-istok text-2xl p-4">Traditional Foods</div>
+                <div className="absolute top-0 left-0 text-black font-bold font-istok text-2xl p-4">Restaurants</div>
                 <div className="bg-green-600 bg-opacity-20 rounded-lg flex">
-                    <img src={food} alt="food" className="max-w-200 h-auto ml-8 mt-5" style={{ width: '200px', height: '300px' }} />
+                    <img src={food} alt="food" className="max-w-200 h-auto ml-8 mt-20 mb-5" style={{ width: '200px', height: '250px' }} />
                     <div className="flex flex-col items-start ml-8 mr-8 mt-16">
                         <p className="text-black text-lg mb-8 font-istok">
-                            "Indulge your senses in the tantalizing flavors of Traditional Foods, where each dish tells a story of heritage and culinary craftsmanship. Delve into a gastronomic journey that celebrates the diverse culinary traditions of our destinations, from mouthwatering street eats to sumptuous family recipes passed down through generations."
+                            “Embark on a captivating culinary voyage through Sri Lankan restaurants, where every dish whispers tales of ancient traditions and culinary artistry. From fragrant curries to crispy hoppers, savor the flavors that have been lovingly preserved and shared across generations.” 🍛🌶️🥥
                         </p>
+                        <Link to="/restaurant">
                         <button className="absolute bottom-8 right-8 bg-lime-400 shadow-lg text-black py-4 px-8 rounded font-bold ">Explore</button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -55,7 +61,7 @@ export default function Stportal() {
                     <img src={vila} alt="vila" className="max-w-200 h-auto ml-8 mt-5" style={{ width: '200px', height: '300px' }} />
                     <div className="flex flex-col items-start ml-8 mr-8 mt-16">
                         < p className="text-black text-lg mb-8 font-istok">
-                        " Welcome to Eco-Resorts, where luxury meets sustainability amidst the breathtaking beauty of nature. Escape to our carefully selected havens that blend seamlessly into their surroundings, offering you a chance to unwind in harmony with the environment. Immerse yourself in eco-conscious accommodations that prioritize conservation and community involvement, ensuring your stay leave."
+                            " Welcome to Eco-Resorts, where luxury meets sustainability amidst the breathtaking beauty of nature. Escape to our carefully selected havens that blend seamlessly into their surroundings, offering you a chance to unwind in harmony with the environment. Immerse yourself in eco-conscious accommodations that prioritize conservation and community involvement, ensuring your stay leave."
                         </p>
                         <button className="absolute bottom-8 right-8 bg-lime-400 shadow-lg text-black py-4 px-8 rounded font-bold ">Explore</button>
                     </div>
@@ -67,7 +73,7 @@ export default function Stportal() {
                     <img src={transport} alt="transport" className="max-w-200 h-auto ml-8 mt-5" style={{ width: '200px', height: '300px' }} />
                     <div className="flex flex-col items-start ml-8 mr-8 mt-16">
                         < p className="text-black text-lg mb-8 font-istok">
-                        " Experience travel with a conscience through Eco-Transport, where sustainability meets seamless exploration. Embrace eco-friendly modes of transportation that minimize carbon footprint while maximizing your adventure. From electric bikes and hybrid vehicles to eco-conscious tour operators, our curated selection of transportation options ensures you can journey responsibly without compromising on convenience or comfort. Join us in shaping a greener future of travel, one ride at a time."
+                            " Experience travel with a conscience through Eco-Transport, where sustainability meets seamless exploration. Embrace eco-friendly modes of transportation that minimize carbon footprint while maximizing your adventure. From electric bikes and hybrid vehicles to eco-conscious tour operators, our curated selection of transportation options ensures you can journey responsibly without compromising on convenience or comfort. Join us in shaping a greener future of travel, one ride at a time."
                         </p>
                         <button className="absolute bottom-8 right-8 bg-lime-400 shadow-lg text-black py-4 px-8 rounded font-bold ">Explore</button>
                     </div>

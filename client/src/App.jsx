@@ -14,6 +14,10 @@ import Header from './components/Header';
 import Profile from './pages/Profile';
 import ScrollToTop from './components/ScrollToTop';
 import Tour from './pages/Tour';
+import Stportal from './pages/Stportal';
+import Traditional from './pages/Traditional';
+import Restaurants from './pages/Restaurants';
+import Attraction from './pages/Attractions';
 
 export default function App() {
   return (
@@ -28,7 +32,9 @@ export default function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/tours' element={<Tour />} />
         <Route path='/stportal' element={<Stportal />} />
-        <Route path='traditional' element={<Traditional />} />
+        <Route path='/traditional' element={<Traditional />} />
+        <Route path='/restaurant' element={<Restaurants />} />
+        <Route path='/attraction' element={< Attraction/>} />
         <Route path='/update-place/:placeId' element={<UpdatePlaces />} />
         <Route path='/place/:placeSlug' element={<Placepage />} />
         <Route element={<PrivateRoute />}>
