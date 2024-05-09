@@ -18,6 +18,8 @@ import Stportal from './pages/Stportal';
 import Traditional from './pages/Traditional';
 import Restaurants from './pages/Restaurants';
 import Attraction from './pages/Attractions';
+import Pottery from './pages/Pottery';
+import Mask from './pages/Mask';
 
 export default function App() {
   return (
@@ -35,6 +37,8 @@ export default function App() {
         <Route path='/traditional' element={<Traditional />} />
         <Route path='/restaurant' element={<Restaurants />} />
         <Route path='/attraction' element={< Attraction/>} />
+        <Route path='/pottery' element={< Pottery/>} />
+        <Route path='/mask' element={< Mask/>} />
         <Route path='/update-place/:placeId' element={<UpdatePlaces />} />
         <Route path='/place/:placeSlug' element={<Placepage />} />
         <Route element={<PrivateRoute />}>

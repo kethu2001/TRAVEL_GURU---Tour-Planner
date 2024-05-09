@@ -1,6 +1,5 @@
 import React from "react";
-import farmer from '../images/farmer.png'
-import mask from '../images/mask.png';
+import fisherman from '../images/fisherman.png'
 import mask2 from '../images/mask2.png';
 import pottery from '../images/pottery.png';
 import handloom from '../images/handloom.png';
@@ -13,7 +12,7 @@ export default function Traditional() {
                 <div className="bg-green-500 bg-opacity-70 rounded-lg w-3/7 px-8 py-5  shadow-lg border border-black absolute mt-4 left-20">
                     <p className="text-white text-center text-4xl font-bold font-istok">Traditional Industries</p>
                 </div>
-                <img src={farmer} alt="farmer" className="max-w-full " style={{ width: '100%', height: '500px' }} />
+                <img src={fisherman} alt="fisherman" className="max-w-full " style={{ width: '100%', height: '500px' }} />
             </div>
             <div className="relative w-3/4 mx-auto mt-20 shadow-md" style={{ maxWidth: '1040px' }}>
                 <div className="absolute top-0 left-0 right-0 text-center text-black font-bold font-istok text-2xl p-4">Pottery Industry</div>
