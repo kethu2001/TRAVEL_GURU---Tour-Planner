@@ -4,6 +4,7 @@ import mask2 from '../images/mask2.png';
 import pottery from '../images/pottery.png';
 import handloom from '../images/handloom.png';
 import wood from '../images/wood.png';
+import { Link } from 'react-router-dom';
 
 export default function Traditional() {
     return (
@@ -22,7 +23,9 @@ export default function Traditional() {
                         <div className="flex flex-col items-start ml-8 mr-8 mt-16">
                             <p className="text-black text-lg mb-8 font-istok">
                             "The pottery industry in Sri Lanka boasts a rich heritage, deeply intertwined with the island's culture and history. Artisans skillfully mold clay into exquisite vessels, reflecting intricate designs and traditional motifs, preserving centuries-old techniques cherished by local communities."                            </p>
+                            <Link to ="/Pottery">
                             <button className="absolute bottom-7 right-8 bg-lime-400 shadow-lg text-black py-4 px-8 rounded font-istok font-bold">Explore</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -36,7 +39,9 @@ export default function Traditional() {
                             <p className="text-black text-lg mb-8 font-istok">
                                 "Sri Lankan masks,cultural significance, are vibrant expressions of tradition and folklore. Crafted with meticulous detail, these symbolize various deities, demons, and characters from mythology, embodying rituals, storytelling, and spiritual beliefs deeply rooted in Sri Lankan culture."
                             </p>
+                            <Link to ="/Mask">
                             <button className="absolute bottom-7 right-8 bg-lime-400 shadow-lg text-black py-4 px-8 rounded font-istok font-bold">Explore</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -50,7 +55,9 @@ export default function Traditional() {
                             <p className="text-black text-lg mb-8 font-istok">
                                 "Sri Lanka's wood carving tradition is a testament to the island's artistic prowess. Skilled artisans intricately carve tales of folklore, religious motifs, and nature's splendor into native woods, preserving heritage while crafting timeless masterpieces that adorn homes, temples, and galleries worldwide."
                             </p>
+                            <Link to ="/Wood">
                             <button className="absolute bottom-8 right-8 bg-lime-400 shadow-lg text-black py-4 px-8 rounded font-istok font-bold">Explore</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -64,7 +71,9 @@ export default function Traditional() {
                             <p className="text-black text-lg mb-8 font-istok">
                                 "Sri Lankan handloom weaving is a cherished craft, passed down through generations. Artisans skillfully intertwine threads of vibrant hues, creating intricate patterns and textures that reflect the island's cultural heritage. Each handwoven creation tells a story, celebrating the artistry and tradition of Sri Lanka."
                             </p>
+                            <Link to ="/Handloom">
                             <button className="absolute bottom-8 right-8 bg-lime-400 shadow-lg text-black py-4 px-8 rounded font-istok font-bold">Explore</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

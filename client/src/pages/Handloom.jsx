@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import Makemask from '../images/Makemask.png';
+import handloomp from '../images/handloomp.png';
 
-
-export default function Mask() {
+export default function Handloom() {
     useEffect(() => {
         // Load Google Maps API asynchronously
         const loadMapScript = () => {
@@ -30,7 +29,7 @@ export default function Mask() {
                         service.nearbySearch({
                             location: userLocation,
                             radius: 5000, // Search within 5km radius
-                            keyword: 'mask'
+                            keyword: 'Handloom'
                         }, (results, status) => {
                             if (status === window.google.maps.places.PlacesServiceStatus.OK) {
                                 for (let i = 0; i < results.length; i++) {
@@ -60,18 +59,17 @@ export default function Mask() {
         // Load Google Maps API and initialize map
         loadMapScript();
     }, []);
-
     return (
-        <div>
-            <img src={Makemask} alt="Makemask" className="max-w-full" style={{ width: '100%', height: '500px' }} />
-            <h2 style={{ fontSize: '24px', marginTop: '20px', marginBottom: '20px' }}><strong>Traditional Mask Industry in Sri Lanka</strong></h2>
+        <div className="flex flex-col items-center justify-center">
+            <img src={handloomp} alt="handloomp" className="max-w-full" style={{ width: '75%', height: '500px' }} />
 
-            <p style={{ fontSize: '18px', marginBottom: '20px' }}>In brief, Sri Lankan traditional masks exclusivity has the magic of making one gape in wonder. Their features make them interesting, and indeed, the character traditional masks are highly distinctive to Sri Lanka. All of them come in vibrant colors and shades. Besides, the following mask’s designs happen to be the most popular from Sri Lanka.&nbsp;</p>
+            <h6 style={{ fontSize: '24px' }}><strong>Handloom Industry in Sri Lanka</strong></h6>
 
-            <ul style={{ fontSize: '18px', marginBottom: '20px' }}><li><strong>Raksha Masks</strong>: These are the masks for devil dances. Misshapen mouths and bulging eyes are a common feature of them.&nbsp;</li><li><strong>Sanni Masks</strong>: The Performers of the ‘Daha-Ata Sanniya’ use these masks. They feature the characters of the ‘Sanni evils’ who cause illnesses according to the myths.&nbsp;</li><li><strong>Kolam Masks</strong>: They mainly highlight human characters, yet with unique features and colors. Mainly used for ‘kolam’, and some of the ‘dance-dramas’.&nbsp;&nbsp;</li></ul>
+            <p className="my-4">In brief, handloom is a hand-woven cotton textile industry. Simply, the handloom industry has a noteworthy past entangled around the legendary history of Sri Lanka. You might sometimes know that there is a belief that the Sri Lankan civilization started with the arrival of Prince Vijaya and his group of 700 followers. And the interesting fact is, when they stepped onto this island, the first human being they met was Kuweni, who was weaving. So, this simply means that weaving was not a new thing for Sri Lankans. Moreover, what had taken the handloom industry this far might be the genes with talents that were passed from generation to generation.&nbsp;</p>
 
-            <p style={{ fontSize: '18px', marginBottom: '20px' }}>These are just a few. There are many more masks that bring out various aspects of life. Even though these masks were used for rituals related to purification, fertility, and fortune in the past, their use in today’s world is quite different. Sri Lankan Traditional Masks are today an ornament that adds beauty to the walls. In addition, they are a popular form of souvenirs as well. However, Ambalangoda and the southernmost areas of the island are more popular for this industry.&nbsp;</p>
+            <p className="my-4">However, thanks to the individuals who are interested in handlooms, the industry is still alive. Further, the handloom industry is portrayed as a trending market among both Sri Lankans and foreigners. On this island, village ladies play a major role in sustaining this industry. Of course, there are a few leading manufacturers with regard. Sill, it mainly remains as a cottage industry that flourishes the beauty of the traditional weaving patterns. Sri Lankan handlooms offer an amusing mix of cotton and silk threads. </p>
 
+            <p className="my-4">Sarees, shawls, and sarongs happen to be the most popular products within the market today. Apart from that, the Sri Lankan handloom industry also gifts the market colorful high-quality household linen, and also curtain fabrics. And the important factor is, among all the other arts and crafts in Sri Lanka, the handloom industry is still alive and is still prospering. Hence, this certainly is an industry that demands high attention and appreciation.&nbsp;&nbsp;&nbsp;</p>
             <div id="map" style={{ width: '100%', height: '300px', marginBottom: '20px' }}></div>
         </div>
     );

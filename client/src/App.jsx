@@ -20,6 +20,9 @@ import Restaurants from './pages/Restaurants';
 import Attraction from './pages/Attractions';
 import Pottery from './pages/Pottery';
 import Mask from './pages/Mask';
+import Wood from './pages/Wood';
+import Handloom from './pages/Handloom';
+import EmergencyMap from './pages/EmergencyMap';
 
 export default function App() {
   return (
@@ -39,6 +42,9 @@ export default function App() {
         <Route path='/attraction' element={< Attraction/>} />
         <Route path='/pottery' element={< Pottery/>} />
         <Route path='/mask' element={< Mask/>} />
+        <Route path='/wood' element={< Wood/>} />
+        <Route path='/handloom' element={< Handloom/>} />
+        <Route path='/EmergencyMap' element={<EmergencyMap/>} />
         <Route path='/update-place/:placeId' element={<UpdatePlaces />} />
         <Route path='/place/:placeSlug' element={<Placepage />} />
         <Route element={<PrivateRoute />}>

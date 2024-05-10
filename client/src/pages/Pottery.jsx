@@ -1,7 +1,68 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Pottery() {
-    
+    const [userLocation, setUserLocation] = useState(null);
+
+    useEffect(() => {
+        // Fetch user's geolocation
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                setUserLocation({
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                });
+            }, () => {
+                // Handle error fetching location
+                console.error("Error fetching user's location");
+            });
+        } else {
+            // Geolocation is not supported by the browser
+            console.error("Geolocation is not supported by this browser");
+        }
+    }, []);
+
+    useEffect(() => {
+        if (userLocation) {
+            // Load Google Maps script
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCnQzEnKMlWf4U7ZUHvIoBWXKyQCyNkbD8&libraries=places`;
+            script.async = true;
+            script.onload = () => {
+                renderMap();
+            };
+            document.body.appendChild(script);
+        }
+    }, [userLocation]);
+
+    const renderMap = () => {
+        const map = new window.google.maps.Map(document.getElementById('map'), {
+            center: { lat: userLocation.lat, lng: userLocation.lng },
+            zoom: 12
+        });
+
+        // Search for nearby pottery shops
+        const service = new window.google.maps.places.PlacesService(map);
+        service.nearbySearch({
+            location: { lat: userLocation.lat, lng: userLocation.lng },
+            radius: 5000, // Search radius in meters
+            type: 'store', // You can change this to 'pottery' or 'art_gallery' if more appropriate
+            keyword: 'pottery shop'
+        }, (results, status) => {
+            if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+                for (let i = 0; i < results.length; i++) {
+                    createMarker(results[i]);
+                }
+            }
+        });
+    };
+
+    const createMarker = (place) => {
+        new window.google.maps.Marker({
+            position: place.geometry.location,
+            map: map,
+            title: place.name
+        });
+    };
     return (
         <div className="post-content">
             <div className="wp-block-image">
@@ -91,7 +152,7 @@ export default function Pottery() {
             <p>The Sri Lankan pottery industry has great potential in the local and international markets. Since many try to reduce their plastic usage, clay products are obviously a great alternative. So, with the proper support and guidance, the Sri Lankan pottery industry can thrive into a successful business. But it is doubtful whether the relevant authorities are extending any support to the needed parties. Due to the lack of resources and the high production cost, people cannot get a good income from the pottery industry. With the current economic condition, it has become almost impossible to engage in the pottery industry with such a low income. So, the industry can shrink even in the local market in the future.&nbsp;&nbsp;</p>
 
             <p>On the other hand, younger generations of the pottery families are not willing to engage in the family businesses as they have other options with better incomes. Due to these issues, the pottery industry can be jeopardized in Sri Lanka in the future. However, if Sri Lankan potters can identify new career paths within the pottery industry such as pottery classes and making creative ornaments, etc., it will be a great future investment. As a whole, the pottery industry can prosper in the future if it received the correct supervision and contributions.</p>
-            
+            <div id="map" style={{ width: '100%', height: '400px' }}></div>
         </div>
     );
 }
