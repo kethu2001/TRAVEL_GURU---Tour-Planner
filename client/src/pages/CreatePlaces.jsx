@@ -89,8 +89,21 @@ export default function CreatePlaces() {
         });
     };
 
+    const countWords = (text) => {
+        return text.trim().split(/\s+/).length;
+    };
+    
+    const isValidDescription = (description) => {
+        return countWords(description) >= 50;
+    };
+    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!isValidDescription(formData.description)) {
+            setError('Description must contain at least 50 words.');
+            return;
+        }
         try {
             const res = await fetch('/api/place/create', {
                 method: 'POST',
@@ -139,6 +152,7 @@ export default function CreatePlaces() {
                                 <textarea type='text' placeholder='Description' className='border-2 p-3 rounded-lg border-yellow-300' id='description' onChange={(e) =>
                                     setFormData({ ...formData, description: e.target.value })
                                 } />
+                                {error && <p className='text-red-700 text-sm'>{error}</p>}
                                 <input type='text' placeholder='Address' className='border-2 p-3 rounded-lg border-yellow-300' id='address' onChange={(e) =>
                                     setFormData({ ...formData, address: e.target.value })
                                 } />

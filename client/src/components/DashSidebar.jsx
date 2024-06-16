@@ -95,9 +95,11 @@ export default function DashSidebar() {
               </Link>
             </>
           )}
-          <Sidebar.Item icon={HiDocumentText} className='cursor-pointer'>
+          <Link to='/dashboard?tab=report'>         
+          <Sidebar.Item active={tab === 'report'} icon={HiDocumentText} className='cursor-pointer' as='div'>
             Reports
           </Sidebar.Item>
+          </Link> 
           <Sidebar.Item
             icon={HiArrowSmRight}
             className='cursor-pointer'
