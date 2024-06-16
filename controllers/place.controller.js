@@ -105,3 +105,16 @@ export const updateplace = async (req, res, next) => {
     next(error);
   }
 };
+
+app.post('reports/generate', authenticate, async (req, res) => {
+  try {
+    const userId = req.body.userId;
+    // Assuming you have a function that generates a report
+    const report = await generateTravelPlacesReport(userId);
+    res.json(report);
+  } catch (error) {
+    console.error('Report generation failed:', error);
+    res.status(500).json({ message: 'Failed to generate report', error: error.message });
+  }
+});
+
