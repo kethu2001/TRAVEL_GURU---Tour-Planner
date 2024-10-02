@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
@@ -13,6 +14,15 @@ import Header from './components/Header';
 import Profile from './pages/Profile';
 import ScrollToTop from './components/ScrollToTop';
 import Tour from './pages/Tour';
+import Stportal from './pages/Stportal';
+import Traditional from './pages/Traditional';
+import Restaurants from './pages/Restaurants';
+import Attraction from './pages/Attractions';
+import Pottery from './pages/Pottery';
+import Mask from './pages/Mask';
+import Wood from './pages/Wood';
+import Handloom from './pages/Handloom';
+import EmergencyMap from './pages/EmergencyMap';
 
 export default function App() {
   return (
@@ -26,6 +36,15 @@ export default function App() {
         <Route path='/signin' element={<SignIn />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/tours' element={<Tour />} />
+        <Route path='/stportal' element={<Stportal />} />
+        <Route path='/traditional' element={<Traditional />} />
+        <Route path='/restaurant' element={<Restaurants />} />
+        <Route path='/attraction' element={< Attraction/>} />
+        <Route path='/pottery' element={< Pottery/>} />
+        <Route path='/mask' element={< Mask/>} />
+        <Route path='/wood' element={< Wood/>} />
+        <Route path='/handloom' element={< Handloom/>} />
+        <Route path='/EmergencyMap' element={<EmergencyMap/>} />
         <Route path='/update-place/:placeId' element={<UpdatePlaces />} />
         <Route path='/place/:placeSlug' element={<Placepage />} />
         <Route element={<PrivateRoute />}>

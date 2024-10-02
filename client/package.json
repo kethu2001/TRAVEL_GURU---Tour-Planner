@@ -10,9 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.19.3",
     "@reduxjs/toolkit": "^2.2.1",
+    "axios": "^1.6.8",
     "firebase": "^10.9.0",
     "flowbite-react": "^0.7.5",
+    "google-map-react": "^2.2.1",
     "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-circular-progressbar": "^2.1.0",
